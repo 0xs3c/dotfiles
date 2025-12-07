@@ -1,0 +1,28 @@
+#!/bin/bash
+
+getVolume() {
+	RAW_STATUS=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+	VOLUME=$(echo "$RAW_STATUS" | awk '{print int($2*100)}')
+	
+
+
+	if echo "$RAW_STATUS" | grep -q "MUTED"; then
+		ISMUTE="true"
+	else
+		ISMUTE="false"
+	fi
+
+
+
+	if [ "$ISMUTE" = "false" ]; then
+		echo "$VOLUME%";
+	
+	elif [ "$ISMUTE" = "true" ]; then 
+		echo "MUTE";
+
+	else
+		echo "ERROR";
+	fi
+
+}
+getVolume

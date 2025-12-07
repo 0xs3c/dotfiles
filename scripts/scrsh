@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Screenshot directory
+DIR="$HOME/Pictures/Screenshots"
+mkdir -p "$DIR"
+
+# Options menu using dmenu
+CHOICE=$(echo -e "Full\nRegion" | dmenu -p "Screenshot: ")
+
+# Timestamp for unique filenames
+TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+
+# Take screenshot based on the choice
+if [[ "$CHOICE" == "Full" ]]; then
+  # Full screen screenshot
+  maim "$DIR/screenshot_$TIMESTAMP.png"
+elif [[ "$CHOICE" == "Region" ]]; then
+  # Region screenshot
+  maim -s "$DIR/screenshot_$TIMESTAMP.png"
+fi
+

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+main(){
+	
+	x="$(echo -e ' Lock\n Quit\n Reboot\n Shutdown' | dmenu -l 4 -p 'Choose One Of The Power Options:')"
+	
+
+	if [ $x = "Shutdown" ];then
+		poweroff;	
+	
+	elif [ $x = "Reboot" ];then
+		reboot;
+	
+	elif [ $x = "Lock" ];then
+		slock;
+	
+	elif [ $x = "Quit" ];then
+		pkill dwm;
+	
+	else
+		echo "Nothing"
+	fi
+}
+main
