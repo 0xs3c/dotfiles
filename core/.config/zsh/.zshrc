@@ -1,10 +1,12 @@
 # 1. CORE SETTINGS
+autoload -U colors && colors
 HISTFILE="$ZDOTDIR/.zsh_history"
 HISTSIZE=10000
 SAVEHIST=10000
 setopt APPEND_HISTORY
 setopt SHARE_HISTORY
 setopt AUTO_CD
+setopt PROMPT_SUBST
 
 # 2. THE PROMPT (Native Git Support)
 autoload -Uz vcs_info
